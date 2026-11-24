@@ -1,0 +1,294 @@
+
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MathWay — Matematika</title>
+    <link rel="stylesheet" href="style.css?v=5">
+</head>
+<body>
+
+    <!-- LOGIN VA REGISTER -->
+
+    <section id="authPage" class="auth-page">
+        <div class="auth-card">
+
+            <div class="logo">∑ MathWay</div>
+
+            <h1 id="authTitle">Xush kelibsiz!</h1>
+
+            <p id="authSubtitle">
+                Davom etish uchun login va parolingizni kiriting.
+            </p>
+
+            <form id="authForm">
+
+                <label for="username">Login</label>
+                <input
+                    id="username"
+                    type="text"
+                    placeholder="Loginingiz"
+                    required
+                    minlength="3"
+                >
+
+                <label for="password">Parol</label>
+                <input
+                    id="password"
+                    type="password"
+                    placeholder="Parolingiz"
+                    required
+                    minlength="4"
+                >
+
+                <button class="main-btn" id="authSubmit" type="submit">
+                    Kirish
+                </button>
+
+            </form>
+
+            <p id="authError" class="auth-error"></p>
+
+            <button id="switchAuth" class="switch-auth" type="button">
+                Akkauntingiz yo‘qmi? Ro‘yxatdan o‘tish
+            </button>
+
+            <p class="auth-note">
+                Demo versiya: akkaunt ma'lumotlari shu brauzerda saqlanadi.
+            </p>
+
+        </div>
+    </section>
+
+    <!-- ASOSIY SAYT -->
+
+    <div id="sitePage" class="hidden">
+
+        <header class="topbar">
+
+            <a class="brand" href="#">∑ MathWay</a>
+
+            <div class="top-right">
+
+                <span class="user-label">
+                    👤 <b id="currentUser"></b>
+                </span>
+
+                <span class="stat">
+                    🔥 <b id="streakCount">0</b>
+                </span>
+
+                <span class="stat coin">
+                    🪙 <b id="coinCount">0</b>
+                </span>
+
+                <button id="logoutBtn" class="logout-btn">
+                    Chiqish
+                </button>
+
+            </div>
+
+        </header>
+
+        <div class="layout">
+
+            <aside class="sidebar">
+
+                <button class="nav-btn active" data-page="learn" onclick="showPage('learn')">
+                    🧠 O‘rganish
+                </button>
+
+                <button class="nav-btn" data-page="shop" onclick="showPage('shop')">
+                    🛍️ Shop
+                </button>
+
+                <div class="side-note">
+                    <b>🎯 Maqsading sari!</b>
+                    <p>
+                        Har kuni 3 ta test yechib,
+                        matematikani o‘rgan.
+                    </p>
+                </div>
+
+            </aside>
+
+            <main class="main">
+
+                <!-- LEARN -->
+
+                <section id="learnPage">
+
+                    <div class="welcome">
+
+                        <div>
+                            <p class="eyebrow">
+                                MATEMATIKA SARGUZASHTI
+                            </p>
+
+                            <h1>Bilimingni oshir! 🚀</h1>
+
+                            <p>
+                                Har kuni 3 ta testni tugatib,
+                                keyingi kunga o‘t.
+                            </p>
+                        </div>
+
+                        <div class="math-art">
+                            π + ∑
+                        </div>
+
+                    </div>
+
+                    <div class="progress-box">
+
+                        <div class="progress-line">
+                            <b>Umumiy natija</b>
+                            <span id="overallText">0 / 180 kun</span>
+                        </div>
+
+                        <div class="track">
+                            <div id="overallBar" class="fill"></div>
+                        </div>
+
+                    </div>
+
+                    <div id="levelsContainer"></div>
+
+                </section>
+
+                <!-- SHOP -->
+
+                <section id="shopPage" class="hidden">
+
+                    <div class="shop-banner">
+                        <div class="shop-banner-info">
+                            <p class="eyebrow">SHIRINLIKLAR BOZORI</p>
+                            <h1>🛍️ Shirinliklar Do‘koni</h1>
+                            <p class="shop-desc">
+                                Matematika masalalarini yechib coin ishlang va sevimli shirinliklaringizni xarid qiling!
+                            </p>
+                        </div>
+                        <div class="shop-balance-card">
+                            <span class="balance-label">Sizning balansingiz:</span>
+                            <div class="balance-display">
+                                🪙 <b id="shopCoinCount">0</b> <span class="coin-text">coin</span>
+                            </div>
+                            <button id="dailyBonusBtn" class="bonus-btn" type="button">
+                                🎁 Kunlik bonus (+5 coin)
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Do'kon boshqaruvi va kategoriyalar -->
+                    <div class="shop-controls">
+                        <div class="category-tabs" id="categoryTabs">
+                            <button class="cat-btn active" data-cat="all">Barchasi</button>
+                            <button class="cat-btn" data-cat="nesquik">🐰 Nesquik</button>
+                            <button class="cat-btn" data-cat="chocolate">🍫 Shokoladlar</button>
+                            <button class="cat-btn" data-cat="drink">🥤 Kakao & Ichimlik</button>
+                            <button class="cat-btn" data-cat="cookie">🍪 Pechyonka & Vafli</button>
+                            <button class="cat-btn" data-cat="candy">🍬 Konfet & Marmelad</button>
+                        </div>
+
+                        <div class="shop-view-switch">
+                            <button id="shopTabBtn" class="view-switch-btn active" type="button">
+                                🛒 Do‘kon (<span id="shopCatalogCount">0</span>)
+                            </button>
+                            <button id="inventoryTabBtn" class="view-switch-btn" type="button">
+                                🎒 Savatcham (<span id="myInventoryCount">0</span>)
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- TOVARLAR RO'YXATI -->
+                    <div id="shopProductsView">
+                        <div id="shopProductsGrid" class="shop-grid"></div>
+                    </div>
+
+                    <!-- XARIDLARIM (SAVATCHAM / INVENTAR) -->
+                    <div id="shopInventoryView" class="hidden">
+                        <div class="inventory-section-header">
+                            <div>
+                                <h2>🎒 Mening shirinliklarim</h2>
+                                <p>Siz xarid qilgan barcha mazali mahsulotlar shu yerda saqlanadi.</p>
+                            </div>
+                        </div>
+                        <div id="inventoryGrid" class="inventory-grid"></div>
+                        <div id="emptyInventory" class="empty-inventory hidden">
+                            <div class="empty-inv-icon">🧺</div>
+                            <h3>Hozircha shirinlik xarid qilmadingiz</h3>
+                            <p>Do‘kondan Nesquik yoki boshqa shirinliklarni tanlab xarid qiling!</p>
+                            <button id="goShoppingBtn" class="main-btn go-shop-btn" type="button">
+                                🛍️ Do‘konga qaytish
+                            </button>
+                        </div>
+                    </div>
+
+                </section>
+
+            </main>
+
+        </div>
+
+    </div>
+
+    <!-- TEST OYNASI -->
+
+    <div id="testModal" class="modal hidden">
+
+        <div class="test-card">
+
+            <div class="test-top-bar">
+                <button id="backTestBtn" class="back-btn" type="button" onclick="closeTest()">
+                    ✕ Chiqish (Ortga)
+                </button>
+                <button id="prevTestBtn" class="prev-test-btn" type="button" onclick="goToPrevTest()">
+                    ⬅️ Oldingi test
+                </button>
+                <button id="closeTest" class="close-modal-btn" type="button" title="Yopish" onclick="closeTest()">
+                    ✕
+                </button>
+            </div>
+
+            <div class="test-meta">
+
+                <b id="testLevel">START</b>
+
+                <span id="testDay">1-kun</span>
+
+                <span id="testNumber">Test 1 / 3</span>
+
+            </div>
+
+            <div class="track">
+                <div id="testProgress" class="fill"></div>
+            </div>
+
+            <h2 id="testTitle">1-test</h2>
+
+            <p id="questionText" class="question"></p>
+
+            <div id="answerList" class="answer-list"></div>
+
+            <p id="testFeedback" class="feedback"></p>
+
+            <div class="test-actions">
+                <button id="backTestBottomBtn" class="back-btn-bottom" type="button" onclick="closeTest()">
+                    ✕ Chiqish (Ortga)
+                </button>
+                <button id="testAction" class="main-btn" disabled>
+                    Javobni tanlang
+                </button>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div id="toast" class="toast"></div>
+
+    <script src="script.js?v=4"></script>
+
+</body>
+</html>
